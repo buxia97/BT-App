@@ -49,6 +49,7 @@
 									</li>
 								</ul>
 						</div>
+						
 					</div>
 				</aside>
 				<!-- 主页面标题 -->
@@ -152,22 +153,18 @@
 						</li>
 						</ul>
 						<div class="box-title">
-							<h4>最新操作日志</h4>
+							<h4>服务器基本信息</h4>
 						</div>
 						<div class="OperationLog">
 							<div class="OperationLog-box">
-								<p><span>编号：</span>2667</p>
-								<p><span>用户：</span>rqzlfbvx</p>
-								<p><span>操作类型：</span>用户登录</p>
-								<p><span>详情：</span>登录成功,帐号:rqzlfbvx,登录IP:27.38.29.10:19727</p>
-								<p><span>操作时间：</span>2020-07-18 11:33:37</p>
-							</div>
-							<div class="OperationLog-box">
-								<p><span>编号：</span>2666</p>
-								<p><span>用户：</span>rqzlfbvx</p>
-								<p><span>操作类型：</span>用户登录</p>
-								<p><span>详情：</span>登录成功,帐号:rqzlfbvx,登录IP:27.38.29.10:19727</p>
-								<p><span>操作时间：</span>2020-07-18 11:33:37</p>
+								<p><span>版本号：</span>V {{version}}</p>
+								<p><span>CPU型号：</span>{{cpu[3]}}</p>
+								<p><span>内存大小：</span>{{mem.memTotal}} M</p>
+								<p><span>总磁盘大小：</span>{{disk[0].size[0]}}</p>
+								<p><span>已稳定运行：</span>{{time}}</p>
+								<p><span>网站总数：</span>{{site_total}}</p>
+								<p><span>数据库总数：</span>{{database_total}}</p>
+								<p><span>FTP总数：</span>{{ftp_total}}</p>
 							</div>
 						</div>
 						</div>
@@ -242,18 +239,23 @@
 				cpu:[],
 				memRate:"0%",
 				loadRate:"0%",
+				version:"",
+				database_total:0,
+				time:"",
+				site_total:0,
+				ftp_total:0,
 			},
 			mounted:function(){
 				this.GetNetWork();
 				setInterval(() => {
-				  this.GetNetWork();
+				  //this.GetNetWork();
 				},5000);
 				document.getElementById("page-title").innerText=this.title;
 			},
 			methods:{
 				GetNetWork(){
 					const that=this;
-					var url = ROOTURL;
+					var url = ROOTURL+"?action=GetNetWork";
 					mui.ajax(url,{
 						dataType:'json',
 						headers:{'Content-Type':'application/json'},
@@ -267,7 +269,12 @@
 							that.disk=data.disk;
 							that.cpu=data.cpu;
 							that.title=data.title;
-							//console.log(JSON.stringify(data));
+							that.version = data.version;
+							that.time = data.time;
+							that.site_total = data.site_total;
+							that.ftp_total = data.ftp_total;
+							that.database_total = data.database_total;
+							console.log(JSON.stringify(data));
 							that.memRate=that.toPercent(data.mem.memRealUsed/data.mem.memTotal),
 							that.loadRate=that.toPercent(data.load.one/data.load.limit);
 							
