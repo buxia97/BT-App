@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<link href="fonts/iconfont.css" rel="stylesheet"/>
+	<link href="css/base.css" rel="stylesheet"/>
+
+</head>
+<body>
+	<!-- 主界面菜单同时移动 -->
+		<!-- 侧滑导航根容器 -->
+		
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+				<!-- 菜单容器 -->
+				<aside class="mui-off-canvas-left" id="offCanvasSide">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!-- 菜单具体展示内容 -->
+							<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											添加节点
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											所有节点
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											帮助中心
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											反馈建议
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											关于BTAPP
+										</a>
+									</li>
+								</ul>
+						</div>
+					</div>
+				</aside>
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-icon mui-action-menu iconfont icon-menu2 mui-pull-left" href="#offCanvasSide"></a>
+					<h1 class="mui-title" id="page-title"></h1>
+				</header>
+				<nav class="mui-bar mui-bar-tab" id="footer">
+					<a class="mui-tab-item mui-active">
+						<span class="mui-icon iconfont icon-warehouse-delivery"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item">
+						<span class="mui-icon iconfont icon-data"></span>
+						<span class="mui-tab-label">监控</span>
+					</a>
+					<a class="mui-tab-item">
+						<span class="mui-icon iconfont icon-set"></span>
+						<span class="mui-tab-label">设置</span>
+					</a>
+				</nav>
+				<!-- 主页面内容容器 -->
+				<div class="mui-content mui-scroll-wrapper">
+					
+					
+					<div class="mui-scroll">
+						<div id="app">
+						<!-- 主界面具体展示内容 -->
+						<div class="box-title">
+							<h4>资源监控</h4>
+						</div>
+						<div class="state-box">
+							<div class="state">
+								<div class="state-main">
+									<p>负载状态</p>
+									<h4>{{loadRate}}</h4>
+								</div>
+								
+							</div>
+							<div class="state">
+								<div class="state-main">
+									<p>CPU使用率</p>
+									<h4>{{cpu[0]}}%</h4>
+								</div>
+								
+							</div>
+							<div class="state">
+								<div class="state-main">
+									<p>内存使用率</p>
+									<h4>{{memRate}}</h4>
+								</div>
+							</div>
+							<div class="state">
+								<div class="state-main">
+									<p>磁盘使用</p>
+									<h4>{{disk[0].size[1]}}/{{disk[0].size[0]}}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="box-title">
+							<h4>功能大全</h4>
+						</div>
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<a href="javascript:;" id="website">
+								<span class="mui-icon iconfont icon-similarproduct"></span>
+								<div class="mui-media-body">网站管理</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<a href="javascript:;" id="ftp">
+								<span class="mui-icon  iconfont icon-print"><!--<span class="mui-badge mui-badge-red">5</span>--></span>
+								
+								
+								<div class="mui-media-body">FTP管理</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<a href="javascript:;" id="database">
+								<span class="mui-icon  iconfont icon-jifen"></span>
+								<div class="mui-media-body">数据库</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<a href="javascript:;" id="safety">
+								<span class="mui-icon  iconfont icon-trade-assurance"></span>
+								<div class="mui-media-body">安全设置</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<a href="javascript:;" id="folder">
+								<span class="mui-icon  iconfont icon-folder"></span>
+								<div class="mui-media-body">文件管理</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<a href="javascript:;" id="crontab">
+								<span class="mui-icon  iconfont icon-training"></span>
+								<div class="mui-media-body">计划任务</div>
+							</a>
+						</li>
+						</ul>
+						<div class="box-title">
+							<h4>最新操作日志</h4>
+						</div>
+						<div class="OperationLog">
+							<div class="OperationLog-box">
+								<p><span>编号：</span>2667</p>
+								<p><span>用户：</span>rqzlfbvx</p>
+								<p><span>操作类型：</span>用户登录</p>
+								<p><span>详情：</span>登录成功,帐号:rqzlfbvx,登录IP:27.38.29.10:19727</p>
+								<p><span>操作时间：</span>2020-07-18 11:33:37</p>
+							</div>
+							<div class="OperationLog-box">
+								<p><span>编号：</span>2666</p>
+								<p><span>用户：</span>rqzlfbvx</p>
+								<p><span>操作类型：</span>用户登录</p>
+								<p><span>详情：</span>登录成功,帐号:rqzlfbvx,登录IP:27.38.29.10:19727</p>
+								<p><span>操作时间：</span>2020-07-18 11:33:37</p>
+							</div>
+						</div>
+						</div>
+					</div>
+					
+				</div>
+		   	 <div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+	<script src="js/mui.min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/axios.min.js"></script>
+	
+	<script src="js/box.js"></script>
+    <script>
+      	mui.init();
+		mui('.mui-scroll-wrapper').scroll(); 
+		mui.plusReady(function() {
+		    plus.navigator.setStatusBarStyle("dark");
+			plus.navigator.setStatusBarBackground('#ffffff');//设置状态栏的颜色
+			document.getElementById("website").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'website.html',
+					id: 'website.html'
+				});
+			});
+			document.getElementById("ftp").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'ftp.html',
+					id: 'ftp.html'
+				});
+			});document.getElementById("ftp").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'ftp.html',
+					id: 'ftp.html'
+				});
+			});
+			document.getElementById("database").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'database.html',
+					id: 'database.html'
+				});
+			});
+			document.getElementById("safety").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'safety.html',
+					id: 'safety.html'
+				});
+			});
+			document.getElementById("folder").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'folder.html',
+					id: 'folder.html'
+				});
+			});
+			document.getElementById("crontab").addEventListener('tap', function(event) {
+				mui.openWindow({
+					url: 'crontab.html',
+					id: 'crontab.html'
+				});
+			});
+			
+			
+		});
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				load:{},
+				title:"宝塔面板",
+				mem:{},
+				disk:{},
+				cpu:[],
+				memRate:"0%",
+				loadRate:"0%",
+			},
+			mounted:function(){
+				this.GetNetWork();
+				setInterval(() => {
+				  this.GetNetWork();
+				},5000);
+				document.getElementById("page-title").innerText=this.title;
+			},
+			methods:{
+				GetNetWork(){
+					const that=this;
+					var url = ROOTURL;
+					mui.ajax(url,{
+						dataType:'json',
+						headers:{'Content-Type':'application/json'},
+						type:'get', 
+						timeout:10000, 
+						async:false,
+						success:function(data){ 
+							
+							that.load=data.load;
+							that.mem = data.mem;
+							that.disk=data.disk;
+							that.cpu=data.cpu;
+							that.title=data.title;
+							//console.log(JSON.stringify(data));
+							that.memRate=that.toPercent(data.mem.memRealUsed/data.mem.memTotal),
+							that.loadRate=that.toPercent(data.load.one/data.load.limit);
+							
+							
+						},
+						error:function(xhr,type,errorThrown){
+							console.log(errorThrown);
+						}
+					});
+				},
+				toPercent(point){
+					if (point==0) {
+						return 0;
+					}
+					var str=Number(point*100).toFixed(2);
+					str+="%";
+					return str;
+				}
+			},
+			
+		})
+    </script>
+</body>
+</html>

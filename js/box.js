@@ -1,0 +1,1 @@
+var ROOTURL = "http://btapi.qlinter.top";
